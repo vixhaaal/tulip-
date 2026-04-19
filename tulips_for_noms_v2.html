@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:linear-gradient(160deg,#fdf0f3 0%,#fce8f0 40%,#f9e0ec 70%,#f5d8e8 100%);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+.scene{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+.petals-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal-fall{position:absolute;width:12px;height:18px;border-radius:50% 50% 40% 40%;opacity:0;animation:petalDrift linear infinite}
+@keyframes petalDrift{0%{transform:translateY(-30px) rotate(0deg);opacity:0}10%{opacity:.6}90%{opacity:.4}100%{transform:translateY(105vh) rotate(720deg) translateX(60px);opacity:0}}
+.header{text-align:center;z-index:2;position:relative;margin-bottom:50px;animation:fadeUp .8s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:3px;color:#c06080;text-transform:uppercase;margin-bottom:16px;display:block}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,60px);color:#7a1a40;line-height:1.2;font-weight:600}
+h1 em{color:#c06080;font-style:italic}
+.subtitle{font-style:italic;font-size:clamp(16px,2.5vw,22px);color:#b06878;margin-top:14px;line-height:1.6}
+.tulip-row{display:flex;gap:clamp(12px,4vw,40px);justify-content:center;align-items:flex-end;z-index:2;position:relative;margin-bottom:50px}
+.tulip-wrap{display:flex;flex-direction:column;align-items:center;animation:growUp 1s cubic-bezier(.22,1,.36,1) forwards;opacity:0}
+.tulip-wrap:nth-child(1){animation-delay:.1s}
+.tulip-wrap:nth-child(2){animation-delay:.25s}
+.tulip-wrap:nth-child(3){animation-delay:.05s}
+.tulip-wrap:nth-child(4){animation-delay:.35s}
+.tulip-wrap:nth-child(5){animation-delay:.15s}
+@keyframes growUp{from{opacity:0;transform:translateY(40px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tulip-wrap svg{overflow:visible;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.tulip-wrap svg:hover{transform:scale(1.08) rotate(-2deg)}
+.message-card{background:rgba(255,255,255,.72);backdrop-filter:blur(12px);border:1px solid rgba(192,96,128,.18);border-radius:24px;padding:clamp(24px,4vw,44px) clamp(20px,4vw,50px);max-width:600px;text-align:center;z-index:2;position:relative;animation:fadeUp 1s .7s ease forwards;opacity:0;box-shadow:0 8px 40px rgba(160,40,80,.08)}
+.message-card p{font-size:clamp(16px,2vw,20px);line-height:1.9;color:#6a2840;font-style:italic}
+.message-card p strong{font-style:normal;color:#7a1a40;font-weight:600;font-family:'Playfair Display',serif}
+.name-big{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,80px);color:#7a1a40;font-style:italic;line-height:1;margin-bottom:8px;display:block}
+.hearts{margin-top:20px;display:flex;justify-content:center;gap:10px}
+.heart{color:#e07090;font-size:20px;animation:pulse 1.4s ease-in-out infinite}
+.heart:nth-child(2){animation-delay:.2s}
+.heart:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.signature{margin-top:24px;font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(15px,2vw,19px);color:#c06080}
+.urdu{font-size:clamp(18px,2.5vw,24px);color:#9a3060;margin-top:10px;font-style:normal;direction:rtl;font-family:'Cormorant Garamond',serif;letter-spacing:1px}
+.grass{position:fixed;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to bottom,transparent,rgba(120,180,100,.15));z-index:1;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="petals-bg" id="petals"></div>
+<div class="scene">
+  <div class="header">
+    <span class="tag">sirf tumhare liye</span>
+    <span class="name-big">Noms</span>
+    <h1>humri <em>biwi,</em> humri babygirl</h1>
+    <p class="subtitle">tumhare liye ye tulips — aur mera poora dil.</p>
+  </div>
+
+  <div class="tulip-row">
+    <div class="tulip-wrap">
+      <svg width="70" height="200" viewBox="0 0 70 200">
+        <g transform="translate(35,0)">
+          <ellipse cx="0" cy="45" rx="22" ry="30" fill="#c0203a"/>
+          <ellipse cx="-14" cy="60" rx="14" ry="22" fill="#d43050" transform="rotate(-22,-14,60)"/>
+          <ellipse cx="14" cy="60" rx="14" ry="22" fill="#d43050" transform="rotate(22,14,60)"/>
+          <ellipse cx="0" cy="40" rx="16" ry="26" fill="#e04060"/>
+          <ellipse cx="-6" cy="50" rx="8" ry="18" fill="#e86878" opacity=".5"/>
+          <path d="M0 75 C0 110 -8 140 -4 180 L4 180 C8 140 0 110 0 75" fill="#4a8a30"/>
+          <path d="M-4 130 C-20 110 -32 100 -28 90 C-10 118 -4 130 -4 130Z" fill="#5a9a38"/>
+          <circle cx="-4" cy="182" r="4" fill="#3a7020"/>
+        </g>
+      </svg>
+    </div>
+    <div class="tulip-wrap">
+      <svg width="80" height="230" viewBox="0 0 80 230">
+        <g transform="translate(40,0)">
+          <ellipse cx="0" cy="38" rx="24" ry="32" fill="#e87090"/>
+          <ellipse cx="-16" cy="55" rx="16" ry="24" fill="#f090a8" transform="rotate(-20,-16,55)"/>
+          <ellipse cx="16" cy="55" rx="16" ry="24" fill="#f090a8" transform="rotate(20,16,55)"/>
+          <ellipse cx="0" cy="34" rx="18" ry="28" fill="#f8b0c0"/>
+          <ellipse cx="-4" cy="46" rx="9" ry="20" fill="#ffd0dc" opacity=".5"/>
+          <path d="M0 85 C2 120 -6 158 -3 215 L3 215 C6 158 -2 120 0 85" fill="#4a8a30"/>
+          <path d="M3 155 C22 130 36 118 30 106 C12 138 3 155 3 155Z" fill="#5a9a38"/>
+          <path d="M-3 175 C-22 155 -34 145 -30 132 C-12 162 -3 175 -3 175Z" fill="#6aaa40"/>
+          <circle cx="0" cy="217" r="4" fill="#3a7020"/>
+        </g>
+      </svg>
+    </div>
+    <div class="tulip-wrap">
+      <svg width="90" height="250" viewBox="0 0 90 250">
+        <g transform="translate(45,0)">
+          <ellipse cx="0" cy="36" rx="26" ry="34" fill="#7040b0"/>
+          <ellipse cx="-18" cy="54" rx="17" ry="26" fill="#9060c8" transform="rotate(-18,-18,54)"/>
+          <ellipse cx="18" cy="54" rx="17" ry="26" fill="#9060c8" transform="rotate(18,18,54)"/>
+          <ellipse cx="0" cy="32" rx="20" ry="30" fill="#b080d8"/>
+          <ellipse cx="-5" cy="44" rx="10" ry="22" fill="#d0a8ec" opacity=".5"/>
+          <path d="M0 90 C-2 130 4 170 2 232 L-2 232 C-4 170 2 130 0 90" fill="#4a8a30"/>
+          <path d="M2 150 C24 124 38 110 32 98 C14 132 2 150 2 150Z" fill="#5a9a38"/>
+          <path d="M-2 190 C-24 168 -38 154 -34 140 C-14 176 -2 190 -2 190Z" fill="#6aaa40"/>
+          <circle cx="0" cy="234" r="5" fill="#3a7020"/>
+        </g>
+      </svg>
+    </div>
+    <div class="tulip-wrap">
+      <svg width="75" height="215" viewBox="0 0 75 215">
+        <g transform="translate(37,0)">
+          <ellipse cx="0" cy="40" rx="22" ry="30" fill="#e8b020"/>
+          <ellipse cx="-15" cy="57" rx="15" ry="22" fill="#f0c840" transform="rotate(-22,-15,57)"/>
+          <ellipse cx="15" cy="57" rx="15" ry="22" fill="#f0c840" transform="rotate(22,15,57)"/>
+          <ellipse cx="0" cy="36" rx="16" ry="26" fill="#f8d860"/>
+          <ellipse cx="-5" cy="48" rx="8" ry="18" fill="#fff0a0" opacity=".5"/>
+          <path d="M0 80 C-3 116 5 152 2 198 L-2 198 C-5 152 3 116 0 80" fill="#4a8a30"/>
+          <path d="M2 138 C20 115 32 103 27 92 C10 124 2 138 2 138Z" fill="#5a9a38"/>
+          <circle cx="0" cy="200" r="4" fill="#3a7020"/>
+        </g>
+      </svg>
+    </div>
+    <div class="tulip-wrap">
+      <svg width="68" height="195" viewBox="0 0 68 195">
+        <g transform="translate(34,0)">
+          <ellipse cx="0" cy="42" rx="21" ry="28" fill="#e05830"/>
+          <ellipse cx="-14" cy="58" rx="13" ry="20" fill="#f07050" transform="rotate(-20,-14,58)"/>
+          <ellipse cx="14" cy="58" rx="13" ry="20" fill="#f07050" transform="rotate(20,14,58)"/>
+          <ellipse cx="0" cy="38" rx="15" ry="24" fill="#f89068"/>
+          <ellipse cx="-4" cy="50" rx="7" ry="16" fill="#ffc0a0" opacity=".45"/>
+          <path d="M0 76 C1 108 -5 140 -2 178 L2 178 C5 140 -1 108 0 76" fill="#4a8a30"/>
+          <path d="M-2 126 C-18 106 -30 96 -26 86 C-8 114 -2 126 -2 126Z" fill="#5a9a38"/>
+          <circle cx="0" cy="180" r="4" fill="#3a7020"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="message-card">
+    <p>Meri pyaari <strong>Noms,</strong></p>
+    <p style="margin-top:12px">Tumse ladna bhi nahi chahta, aur tumhare bina rehna bhi nahi chahta. Tum meri sabse favourite insaan ho — hamesha the, hamesha rahogi.</p>
+    <p style="margin-top:12px">Ye tulips tumhare liye hain, kyunki tum hi meri sabse sundar cheez ho is duniya mein.</p>
+    <div class="urdu">تم میری جان ہو، نومس ❤️</div>
+    <div class="hearts">
+      <span class="heart">♥</span>
+      <span class="heart">♥</span>
+      <span class="heart">♥</span>
+    </div>
+    <div class="signature">— tumhara, hamesha</div>
+  </div>
+</div>
+<div class="grass"></div>
+
+<script>
+const petalsDiv = document.getElementById('petals');
+const colors = ['#f4a0b8','#e87898','#d490c0','#f8c0d0','#c880b0','#f0b0c8','#eeaac0','#fad0e0'];
+for(let i=0;i<30;i++){
+  const p = document.createElement('div');
+  p.className='petal-fall';
+  p.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};width:${8+Math.random()*10}px;height:${12+Math.random()*14}px;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;border-radius:${40+Math.random()*20}% ${40+Math.random()*20}% ${30+Math.random()*20}% ${30+Math.random()*20}%;opacity:0;`;
+  petalsDiv.appendChild(p);
+}
+</script>
+</body>
+</html>
